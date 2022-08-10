@@ -14,7 +14,7 @@ import (
 
 func mapMsifaRegencies(args []string) {
 	logThisln("mapperMsifaRegency")
-	helperLoad(indexFile, &provinces)
+	helperLoads(indexFile, &provinces)
 	folderProvince := ""
 	idLevelWilayah := 0
 	kodeWilayah := ""

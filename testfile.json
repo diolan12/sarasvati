@@ -1,0 +1,342 @@
+[
+ {
+  "id": "11",
+  "name": "ACEH",
+  "dapodik": {
+   "nama": "Prov. Aceh",
+   "kode_wilayah": "060000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "12",
+  "name": "SUMATERA UTARA",
+  "dapodik": {
+   "nama": "Prov. Sumatera Utara",
+   "kode_wilayah": "070000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "13",
+  "name": "SUMATERA BARAT",
+  "dapodik": {
+   "nama": "Prov. Sumatera Barat",
+   "kode_wilayah": "080000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "14",
+  "name": "RIAU",
+  "dapodik": {
+   "nama": "Prov. Riau",
+   "kode_wilayah": "090000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "15",
+  "name": "JAMBI",
+  "dapodik": {
+   "nama": "Prov. Jambi",
+   "kode_wilayah": "100000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "16",
+  "name": "SUMATERA SELATAN",
+  "dapodik": {
+   "nama": "Prov. Sumatera Selatan",
+   "kode_wilayah": "110000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "17",
+  "name": "BENGKULU",
+  "dapodik": {
+   "nama": "Prov. Bengkulu",
+   "kode_wilayah": "260000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "18",
+  "name": "LAMPUNG",
+  "dapodik": {
+   "nama": "Prov. Lampung",
+   "kode_wilayah": "120000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "19",
+  "name": "KEPULAUAN BANGKA BELITUNG",
+  "dapodik": {
+   "nama": "Prov. Kepulauan Bangka Belitung",
+   "kode_wilayah": "290000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "21",
+  "name": "KEPULAUAN RIAU",
+  "dapodik": {
+   "nama": "Prov. Kepulauan Riau",
+   "kode_wilayah": "310000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "31",
+  "name": "DKI JAKARTA",
+  "dapodik": {
+   "nama": "Prov. D.K.I. Jakarta",
+   "kode_wilayah": "010000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "32",
+  "name": "JAWA BARAT",
+  "dapodik": {
+   "nama": "Prov. Jawa Barat",
+   "kode_wilayah": "020000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "33",
+  "name": "JAWA TENGAH",
+  "dapodik": {
+   "nama": "Prov. Jawa Tengah",
+   "kode_wilayah": "030000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "34",
+  "name": "DI YOGYAKARTA",
+  "dapodik": {
+   "nama": "Prov. D.I. Yogyakarta",
+   "kode_wilayah": "040000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "35",
+  "name": "JAWA TIMUR",
+  "dapodik": {
+   "nama": "Prov. Jawa Timur",
+   "kode_wilayah": "050000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "36",
+  "name": "BANTEN",
+  "dapodik": {
+   "nama": "Prov. Banten",
+   "kode_wilayah": "280000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "51",
+  "name": "BALI",
+  "dapodik": {
+   "nama": "Prov. Bali",
+   "kode_wilayah": "220000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "52",
+  "name": "NUSA TENGGARA BARAT",
+  "dapodik": {
+   "nama": "Prov. Nusa Tenggara Barat",
+   "kode_wilayah": "230000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "53",
+  "name": "NUSA TENGGARA TIMUR",
+  "dapodik": {
+   "nama": "Prov. Nusa Tenggara Timur",
+   "kode_wilayah": "240000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "61",
+  "name": "KALIMANTAN BARAT",
+  "dapodik": {
+   "nama": "Prov. Kalimantan Barat",
+   "kode_wilayah": "130000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "62",
+  "name": "KALIMANTAN TENGAH",
+  "dapodik": {
+   "nama": "Prov. Kalimantan Tengah",
+   "kode_wilayah": "140000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "63",
+  "name": "KALIMANTAN SELATAN",
+  "dapodik": {
+   "nama": "Prov. Kalimantan Selatan",
+   "kode_wilayah": "150000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "64",
+  "name": "KALIMANTAN TIMUR",
+  "dapodik": {
+   "nama": "Prov. Kalimantan Timur",
+   "kode_wilayah": "160000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "65",
+  "name": "KALIMANTAN UTARA",
+  "dapodik": {
+   "nama": "Prov. Kalimantan Utara",
+   "kode_wilayah": "340000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "71",
+  "name": "SULAWESI UTARA",
+  "dapodik": {
+   "nama": "Prov. Sulawesi Utara",
+   "kode_wilayah": "170000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "72",
+  "name": "SULAWESI TENGAH",
+  "dapodik": {
+   "nama": "Prov. Sulawesi Tengah",
+   "kode_wilayah": "180000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "73",
+  "name": "SULAWESI SELATAN",
+  "dapodik": {
+   "nama": "Prov. Sulawesi Selatan",
+   "kode_wilayah": "190000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "74",
+  "name": "SULAWESI TENGGARA",
+  "dapodik": {
+   "nama": "Prov. Sulawesi Tenggara",
+   "kode_wilayah": "200000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "75",
+  "name": "GORONTALO",
+  "dapodik": {
+   "nama": "Prov. Gorontalo",
+   "kode_wilayah": "300000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "76",
+  "name": "SULAWESI BARAT",
+  "dapodik": {
+   "nama": "Prov. Sulawesi Barat",
+   "kode_wilayah": "330000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "81",
+  "name": "MALUKU",
+  "dapodik": {
+   "nama": "Prov. Maluku",
+   "kode_wilayah": "210000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "82",
+  "name": "MALUKU UTARA",
+  "dapodik": {
+   "nama": "Prov. Maluku Utara",
+   "kode_wilayah": "270000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "91",
+  "name": "PAPUA BARAT",
+  "dapodik": {
+   "nama": "Prov. Papua Barat",
+   "kode_wilayah": "320000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ },
+ {
+  "id": "94",
+  "name": "PAPUA",
+  "dapodik": {
+   "nama": "Prov. Papua",
+   "kode_wilayah": "250000",
+   "id_level_wilayah": 1,
+   "mst_level_wilayah": 0
+  }
+ }
+]

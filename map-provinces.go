@@ -31,6 +31,7 @@ func mapDapoProvinces() {
 
 func mapProvincesMerge() {
 	logThisln("indexMerge")
+	mainIndex := outputDir + "/" + indexMainFile
 	for _, province := range provincesMsifa {
 		color.Cyan("merging [" + province.ID + "] " + province.Name)
 		for _, dapodik := range dapodikRegions {
@@ -50,7 +51,7 @@ func mapProvincesMerge() {
 	}
 	fmt.Println("Writing data to file...")
 	fjson, _ := json.MarshalIndent(provinces, "", " ")
-	err := ioutil.WriteFile(indexFile, fjson, 0644)
+	err := ioutil.WriteFile(mainIndex, fjson, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}

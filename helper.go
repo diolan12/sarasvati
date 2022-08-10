@@ -55,20 +55,22 @@ func logBlueln(message string) {
 	}
 }
 
-func helperLoad(indexPath string, ptr any) {
-	logThisln("indexLoad = " + indexPath)
-	if _, err := os.Stat(indexPath); errors.Is(err, os.ErrNotExist) {
+func helperLoads(pathToIndex string, ptr any) {
+	logThisln("helperLoad")
+	pathOfIndex := pathToIndex + "/" + indexMainFile
+	if _, err := os.Stat(pathOfIndex); errors.Is(err, os.ErrNotExist) {
 		color.Red("no main index file found!")
-		color.Red("try to map all data first!")
+		color.Red("path = " + pathToIndex)
+		os.RemoveAll(pathToIndex)
 	} else {
 		// Open our jsonFile
-		jsonFile, err := os.Open(indexPath)
+		jsonFile, err := os.Open(pathOfIndex)
 		// if we os.Open returns an error then handle it
 		if err != nil {
 			fmt.Println(err)
 		}
 		if debug {
-			color.Cyan("Successfully Opened " + indexPath)
+			color.Cyan("Successfully Opened " + pathOfIndex)
 		}
 		// defer the closing of our jsonFile so that we can parse it later on
 		defer jsonFile.Close()

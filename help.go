@@ -11,6 +11,7 @@ func help(args []string) {
 	fmt.Println("")
 	fmt.Println("Available commands:")
 	fmt.Println("")
+	fmt.Println("  work")
 	fmt.Println("  auto")
 	fmt.Println("  index")
 	fmt.Println("  help")

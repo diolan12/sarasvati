@@ -14,7 +14,7 @@ import (
 
 func mapMsifaDistricts(args []string) {
 	logThisln("mapMsifaDistricts")
-	helperLoad(indexFile, &provinces)
+	helperLoads(indexFile, &provinces)
 	folderProvince := ""
 	folderDistrict := ""
 	idLevelWilayah := 0
@@ -23,7 +23,7 @@ func mapMsifaDistricts(args []string) {
 		if args[3][:2] == province.ID {
 			color.Magenta("Mapping [" + province.ID + "] " + province.Name + " ...")
 			folderProvince = outputDir + "/" + province.ID + "-" + province.Name
-			helperLoad(folderProvince+"/"+indexMainFile, &regencies)
+			helperLoads(folderProvince, &regencies)
 			if _, err := os.Stat(folderProvince); errors.Is(err, os.ErrNotExist) {
 				err := os.Mkdir(folderProvince, os.ModePerm)
 				if err != nil {

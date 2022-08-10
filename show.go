@@ -9,7 +9,7 @@ import (
 
 func showProvinces() {
 	logThisln("showProvinces")
-	helperLoad(indexFile, &provinces)
+	helperLoads(indexFile, &provinces)
 	for _, province := range provinces {
 		folder := province.ID + "-" + province.Name
 		if _, err := os.Stat(outputDir + "/" + folder); errors.Is(err, os.ErrNotExist) {
@@ -22,7 +22,7 @@ func showProvinces() {
 func showRegencies(id string) {
 	logThisln("showRegencies")
 	logThisln("id: " + id)
-	helperLoad(indexFile, &provinces)
+	helperLoads(indexFile, &provinces)
 	for _, province := range provinces {
 		logThis("match " + id + " == " + province.ID + " : ")
 		logThisln(id == province.ID)
@@ -31,7 +31,7 @@ func showRegencies(id string) {
 			if _, err := os.Stat(folderProvince); errors.Is(err, os.ErrNotExist) {
 			} else {
 				color.Blue("Result for [" + province.ID + "] " + province.Dapodik.KodeWilayah + " " + province.Name + ":\n")
-				helperLoad(folderProvince+"/"+indexMainFile, &regencies)
+				helperLoads(folderProvince, &regencies)
 				for _, regency := range regencies {
 					if regency.ProvinceID == province.ID {
 						folderRegency := folderProvince + "/" + regency.ID + "-" + regency.Name
@@ -54,7 +54,7 @@ func showDistricts(id string) {
 	logThisln("showDistricts")
 	logThisln("id: " + id)
 	provinceID := id[:2]
-	helperLoad(indexFile, &provinces)
+	helperLoads(indexFile, &provinces)
 	for _, province := range provinces {
 		logThis("match " + provinceID + " == " + province.ID + " : ")
 		logThisln(provinceID == province.ID)
@@ -63,14 +63,14 @@ func showDistricts(id string) {
 			if _, err := os.Stat(folderProvince); errors.Is(err, os.ErrNotExist) {
 			} else {
 				color.Blue("Result for [" + province.ID + "] " + province.Dapodik.KodeWilayah + " " + province.Name + ":\n")
-				helperLoad(folderProvince+"/"+indexMainFile, &regencies)
+				helperLoads(folderProvince, &regencies)
 				for _, regency := range regencies {
 					logThis("match " + provinceID + " == " + province.ID + " : ")
 					logThisln(regency.ProvinceID == province.ID && regency.ID == id)
 					folderRegency := folderProvince + "/" + regency.ID + "-" + regency.Name
 					if regency.ProvinceID == province.ID && regency.ID == id {
 						color.Blue("Result for [" + regency.ID + "] " + regency.Dapodik.KodeWilayah + " " + regency.Name + ":\n")
-						helperLoad(folderRegency+"/"+indexMainFile, &districts)
+						helperLoads(folderRegency, &districts)
 						for _, districts := range districts {
 							logThisln("this districts? " + districts.ID[:4] + " == " + id)
 							logThis(districts.ID[:4] == id)

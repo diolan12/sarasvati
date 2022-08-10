@@ -13,7 +13,7 @@ func index(args []string) {
 	logThisln("index")
 	fmt.Println(len(args))
 	fmt.Println(args)
-	indexFile = outputDir + "/" + indexMainFile
+	indexFile = outputDir
 
 	if _, err := os.Stat(outputDir); errors.Is(err, os.ErrNotExist) {
 		err := os.Mkdir(outputDir, os.ModePerm)

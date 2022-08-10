@@ -25,7 +25,8 @@ func auto(args []string) {
 	for check() && count < 1000 {
 		pickTarget()
 		rand.Seed(time.Now().UnixNano())
-		random := time.Duration(rand.Int31n(60))
+		random := time.Duration(rand.Int31n(5))
+		// random := time.Duration(rand.Int31n(60))
 		color.Yellow("[bot] scrapping (" + target + ") in " + strconv.Itoa(int(random)) + " second")
 		time.Sleep(random * time.Second)
 		// time.Sleep(1 * time.Second)
@@ -62,7 +63,7 @@ func check() bool {
 	unindexedRegencies := false
 	unindexedDistricts := false
 	folderRoot := outputDir
-	helperLoad(folderRoot+"/"+indexMainFile, &provinces)
+	helperLoads(folderRoot, &provinces)
 	for _, province := range provinces {
 		folderProvince := folderRoot + "/" + province.ID + "-" + province.Name
 		if _, err := os.Stat(folderProvince); errors.Is(err, os.ErrNotExist) {
@@ -70,8 +71,8 @@ func check() bool {
 			// color.Magenta(province.ID)
 			unindexedProvinces = true
 		} else {
-			fmt.Println("\nhelper load")
-			helperLoad(folderProvince+"/"+indexMainFile, &regencies)
+			fmt.Println("\nhelper load regencies")
+			helperLoads(folderProvince, &regencies)
 			fmt.Println(folderProvince + "/" + indexMainFile)
 			for _, regency := range regencies {
 				folderRegency := folderProvince + "/" + regency.ID + "-" + regency.Name
@@ -80,7 +81,9 @@ func check() bool {
 					// color.Magenta(regency.ID)
 					unindexedRegencies = true
 				} else {
-					helperLoad(folderRegency+"/"+indexMainFile, &districts)
+					fmt.Println("\nhelper load districts")
+					helperLoads(folderRegency, &districts)
+					fmt.Println(folderRegency + "/" + indexMainFile)
 					for _, district := range districts {
 						folderDistrict := folderRegency + "/" + district.ID + "-" + district.Name
 						if _, err := os.Stat(folderDistrict + "/" + district.ID + "-" + district.Name); errors.Is(err, os.ErrNotExist) {

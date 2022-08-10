@@ -116,6 +116,10 @@ func main() {
 	}
 	command := args[1]
 	switch command {
+	case "work":
+		work(args)
+	case "buf":
+		bufWrite()
 	case "auto":
 		auto(args)
 	case "index":
