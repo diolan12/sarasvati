@@ -71,7 +71,7 @@ func getAllRegencies() ([]string, []string, []string) {
 }
 func work(args []string) {
 	// getAllRegencies()
-	provs, regs, dists := getAllRegencies()
+	provs, _, _ := getAllRegencies()
 	// os.Exit(0)
 	// scrappingProvinces()
 	// jobList := []string{
@@ -79,9 +79,9 @@ func work(args []string) {
 	// }
 	// fmt.Println(provs)
 
-	defer dispatcher(dists)
+	// defer dispatcher(dists)
 
-	defer dispatcher(regs)
+	// defer dispatcher(regs)
 
 	defer dispatcher(provs)
 
@@ -133,7 +133,8 @@ func dispatcher(jobList []string) {
 		// statusBar.Refresh()
 		// println("received result", a)
 	}
-	fmt.Println("\n\n\n\njobs closed")
+	statusBar.clear()
+	color.Green("\n[dispatcher] All jobs done!\n")
 }
 
 // ###############################################################################
