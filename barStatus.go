@@ -58,6 +58,13 @@ func (bar *StatusBar) getTime() (s string) {
 	s += strconv.Itoa(int(u)%60) + "s"
 	return
 }
+func (bar *StatusBar) clear() {
+	// fmt.Printf("\033[2J")
+	fmt.Printf("\r\033[A\r")
+	for i := 1; i <= bar.workers; i++ {
+		fmt.Printf("\r\033[A\r")
+	}
+}
 func (bar *StatusBar) load() {
 	last := bar.percent
 	bar.percent = bar.getPercent()
