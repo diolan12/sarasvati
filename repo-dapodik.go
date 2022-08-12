@@ -69,7 +69,6 @@ func dapoGetAlamat(id string) string {
 	// url := "https://sekolah.data.kemdikbud.go.id/index.php/chome/profil/" + id
 	url := "https://sekolah.data.kemdikbud.go.id/index.php/Csanitasi/profil?id=" + id
 	// url := "https://sekolah.data.kemdikbud.go.id/index.php/Ckesiapantik/profil?id=" + id
-	fmt.Println(url)
 	// Instantiate default collector
 	c := colly.NewCollector(
 		// Visit only domains: sekolah.data.kemdikbud.go.id, dapo.kemdikbud.go.id
