@@ -7,6 +7,7 @@ import (
 	"io/ioutil"
 	"log"
 	"os"
+	"strings"
 
 	"github.com/fatih/color"
 )
@@ -64,13 +65,8 @@ func mapMsifaVillages(args []string) {
 	}
 	if len(regencies) == 0 {
 		color.Red("Regency not found")
-		color.Red("Make sure the province is indexed or regency ID is correct")
+		color.Red("Make sure the regency is indexed or regency ID is correct")
 	} else {
-		// fmt.Println(kodeWilayah)
-		// fmt.Println(districtName)
-		// fmt.Println(folderDistrict)
-		// kb := []School{}
-		// tk := []School{}
 		mapDapoSchool(kodeWilayah, districtName, "kb")
 		mapVillagesMerge(folderDistrict, districtName, "kb")
 
@@ -123,6 +119,9 @@ func mapVillagesMerge(folderDistrict string, district string, bentuk string) {
 		log.Fatal(errIndex)
 	}
 
+	for index, school := range schools {
+		schools[index].IDEncrypt = strings.ReplaceAll(school.IDEncrypt, " ", "")
+	}
 	fmt.Println("Writing data to " + targetFile + " ...")
 	fjson, _ := json.MarshalIndent(schools, "", " ")
 	err := ioutil.WriteFile(targetFile, fjson, 0644)
