@@ -33,6 +33,8 @@ func mapMsifaDistricts(args []string) {
 			for _, regency := range regencies {
 				if args[3] == regency.ID {
 					color.Magenta("Mapping [" + regency.ID + "] " + regency.Dapodik.KodeWilayah + " " + regency.Name + " ...")
+
+					// mapping region dapodik
 					folderDistrict = folderProvince + "/" + regency.ID + "-" + regency.Name
 					idLevelWilayah = regency.Dapodik.IDLevelWilayah
 					kodeWilayah = regency.Dapodik.KodeWilayah
@@ -46,6 +48,21 @@ func mapMsifaDistricts(args []string) {
 					jsonErr := json.Unmarshal(jsonByte, &districtsMsifa)
 					if jsonErr != nil {
 						log.Fatal(jsonErr)
+					}
+
+					// mapping pondok per kabupaten
+					jsonBytePondok := kemenagGetFromDistrict(regency.ID)
+					jsonErrPondok := json.Unmarshal(jsonBytePondok, &pondoks)
+					if jsonErrPondok != nil {
+						log.Fatal(jsonErrPondok)
+						pondoks = []Pondok{}
+					}
+					targetFilePondok := folderDistrict + "/ponpes-" + indexMainFile
+					fmt.Println("Writing data to " + targetFilePondok + " ...")
+					fjson, _ := json.MarshalIndent(pondoks, "", " ")
+					err := ioutil.WriteFile(targetFilePondok, fjson, 0644)
+					if err != nil {
+						log.Fatal(err)
 					}
 					break
 				}
@@ -75,6 +92,7 @@ func mapDistrictsMerge(folderDistrict string) {
 	logThisln("mapDistrictsMerge")
 	for _, district := range districtsMsifa {
 		color.Cyan("Merging [" + district.ID + "] (" + district.Name + ")")
+
 		for _, region := range dapodikRegions {
 			replaceKec := strings.ReplaceAll(region.Name, "Kec. ", "")
 			current := strings.ToUpper(replaceKec)
@@ -90,11 +108,11 @@ func mapDistrictsMerge(folderDistrict string) {
 			}
 		}
 	}
-
 	fmt.Println("Writing data to " + targetFile + " ...")
 	fjson, _ := json.MarshalIndent(districts, "", " ")
 	err := ioutil.WriteFile(targetFile, fjson, 0644)
 	if err != nil {
 		log.Fatal(err)
 	}
+	pondoks = []Pondok{}
 }
