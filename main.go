@@ -7,60 +7,6 @@ import (
 	"github.com/gocolly/colly"
 )
 
-// emsifa rest api struct
-type MsifaProvince struct {
-	ID   string `json:"id"`
-	Name string `json:"name"`
-}
-type MsifaRegency struct {
-	ID         string `json:"id"`
-	ProvinceID string `json:"province_id"`
-	Name       string `json:"name"`
-}
-type MsifaDistrict struct {
-	ID        string `json:"id"`
-	RegencyID string `json:"regency_id"`
-	Name      string `json:"name"`
-}
-
-// dapodik resp api struct
-type DapodikRegion struct {
-	Name            string `json:"nama"`
-	KodeWilayah     string `json:"kode_wilayah"`
-	IDLevelWilayah  int    `json:"id_level_wilayah"`
-	MstLevelWilayah int    `json:"mst_level_wilayah"`
-}
-type School struct {
-	Nama      string `json:"nama"`
-	ID        string `json:"sekolah_id"`
-	IDEncrypt string `json:"sekolah_id_enkrip"`
-	Alamat    string `json:"alamat"`
-}
-
-// app personalized struct
-type Province struct {
-	ID      string        `json:"id"`
-	Name    string        `json:"name"`
-	Dapodik DapodikRegion `json:"dapodik"`
-}
-type Regency struct {
-	ID         string        `json:"id"`
-	ProvinceID string        `json:"province_id"`
-	Name       string        `json:"name"`
-	Dapodik    DapodikRegion `json:"dapodik"`
-}
-type District struct {
-	ID        string        `json:"id"`
-	RegencyID string        `json:"regency_id"`
-	Name      string        `json:"name"`
-	Dapodik   DapodikRegion `json:"dapodik"`
-}
-type Village struct {
-	ID         string `json:"id"`
-	DistrictID string `json:"district_id"`
-	Name       string `json:"name"`
-}
-
 // App constants
 // var allowedDomains = [...]string{"sekolah.data.kemdikbud.go.id", "dapo.kemdikbud.go.id"}
 // var allowedDomains = {"sekolah.data.kemdikbud.go.id", "dapo.kemdikbud.go.id"}
@@ -77,6 +23,8 @@ const (
 
 	urlDapoRegions = "https://dapo.kemdikbud.go.id/rekap/dataSekolah?id_level_wilayah={idLevelWilayah}&kode_wilayah={kodeWilayah}&semester_id=20221"
 	urlDapoSchool  = "https://dapo.kemdikbud.go.id/rekap/progresSP?id_level_wilayah=3&kode_wilayah={kodeWilayah}&semester_id=20221&bentuk_pendidikan_id={type}"
+
+	urlKemenag = "https://api-pesantren-indonesia.vercel.app/pesantren/{ID_Kab}.json"
 )
 
 // App memory
@@ -92,6 +40,7 @@ var districts []District
 var villages []Village
 
 var schools = []School{}
+var pondoks = []Pondok{}
 
 var appColly = colly.NewCollector(
 	colly.AllowedDomains("sekolah.data.kemdikbud.go.id", "dapo.kemdikbud.go.id"),
@@ -105,7 +54,7 @@ func main() {
 
 	// Before making a request print "Visiting ..."
 	appColly.OnRequest(func(r *colly.Request) {
-		color.Cyan("Fetching data from " + r.URL.String() + " ...")
+		logCyanln("Fetching data from " + r.URL.String() + " ...")
 	})
 
 	if len(args) < 2 {
@@ -124,7 +73,12 @@ func main() {
 		auto(args)
 	case "index":
 		index(args)
+	case "serve":
+		serve(args)
 	case "help":
+		help(args)
+	default:
+		color.Red("Command not found!")
 		help(args)
 	}
 }

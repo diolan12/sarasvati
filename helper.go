@@ -39,21 +39,28 @@ func logThisln(message any) {
 		log.Println(message)
 	}
 }
-func logRedln(message string) {
+
+func logCyanln(message string) {
 	if debug {
-		color.Red(message)
+		color.Cyan(message)
 	}
 }
-func logGreenln(message string) {
-	if debug {
-		color.Green(message)
-	}
-}
-func logBlueln(message string) {
-	if debug {
-		color.Blue(message)
-	}
-}
+
+// func logRedln(message string) {
+// 	if debug {
+// 		color.Red(message)
+// 	}
+// }
+// func logGreenln(message string) {
+// 	if debug {
+// 		color.Green(message)
+// 	}
+// }
+// func logBlueln(message string) {
+// 	if debug {
+// 		color.Blue(message)
+// 	}
+// }
 
 func helperLoads(pathToIndex string, ptr any) {
 	logThisln("helperLoad")
@@ -79,6 +86,6 @@ func helperLoads(pathToIndex string, ptr any) {
 	}
 }
 
-func isOdd(x int) bool {
-	return x%2 != 0
-}
+// func isOdd(x int) bool {
+// 	return x%2 != 0
+// }
