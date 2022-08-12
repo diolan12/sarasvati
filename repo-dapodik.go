@@ -77,7 +77,7 @@ func dapoGetAlamat(id string) string {
 	)
 
 	c.OnError(func(r *colly.Response, err error) {
-		color.Red("Request error: %d", r.StatusCode)
+		color.Red("\033[A\033[D\t\t\t\t\t\t\tRequest error: %d", r.StatusCode)
 		doc, _ := goquery.NewDocumentFromReader(strings.NewReader(string(r.Body)))
 		// doc.Find("font.small").Each(func(i int, s *goquery.Selection) {
 		doc.Find("small").Each(func(i int, s *goquery.Selection) {
