@@ -20,10 +20,7 @@ func dapoGetAllRegions(idLevelWilayah int, kodeWilayah string) []byte {
 	replaceIdLevelWilayah := strings.Replace(urlDapoRegions, "{idLevelWilayah}", strconv.Itoa(idLevelWilayah), -1)
 	url := strings.Replace(replaceIdLevelWilayah, "{kodeWilayah}", kodeWilayah, -1)
 	data := []byte{}
-	// create colly scrapper
-	// c := colly.NewCollector(
-	// 	colly.AllowedDomains(&allowedDomains),
-	// )
+
 	appColly.OnHTML("body", func(e *colly.HTMLElement) {
 		// Initiate empty slice of Sekolah
 		// var list []Sekolah
@@ -56,10 +53,11 @@ func dapoGetSchool(kodeWilayah string, district string, bentuk string) []byte {
 		if err != nil {
 			fmt.Println(err)
 		}
-		// for index, school := range schools {
-		// almt := dapoGetAlamat(school.ID)
-		// schools[index].Alamat = almt
-		// }
+		for index, school := range schools {
+			almt := dapoGetAlamat(school.ID)
+			// schools[index].IDEncrypt = strings.ReplaceAll(school.IDEncrypt, " ", "")
+			schools[index].Alamat = almt
+		}
 	})
 	appColly.Visit(url)
 	return data
@@ -68,7 +66,9 @@ func dapoGetAlamat(id string) string {
 	// Initiate blank address value
 	address := ""
 	// Base url
-	url := "https://sekolah.data.kemdikbud.go.id/index.php/chome/profil/" + id
+	// url := "https://sekolah.data.kemdikbud.go.id/index.php/chome/profil/" + id
+	url := "https://sekolah.data.kemdikbud.go.id/index.php/Csanitasi/profil?id=" + id
+	// url := "https://sekolah.data.kemdikbud.go.id/index.php/Ckesiapantik/profil?id=" + id
 	fmt.Println(url)
 	// Instantiate default collector
 	c := colly.NewCollector(
@@ -78,38 +78,38 @@ func dapoGetAlamat(id string) string {
 	)
 
 	c.OnError(func(r *colly.Response, err error) {
-		color.Red("Request error:", r.StatusCode)
+		color.Red("Request error: %d", r.StatusCode)
 		doc, _ := goquery.NewDocumentFromReader(strings.NewReader(string(r.Body)))
-		doc.Find("font.small").Each(func(i int, s *goquery.Selection) {
+		// doc.Find("font.small").Each(func(i int, s *goquery.Selection) {
+		doc.Find("small").Each(func(i int, s *goquery.Selection) {
 			text := s.Text()
 			if strings.Contains(text, "(master referensi)") {
 				add := strings.Split(text, "(")[0]
-				addr := add[1:]
-				address = addr[:len(add)-2]
+				// addr := add[1:]
+				address = add //addr[:len(add)-1]
 				// Printing the address
-				color.Green("Address for " + id + " has been found")
-				color.Green(address)
+				color.Green("Found [" + address + "]")
 			}
 		})
 
 	})
 
-	c.OnHTML("font.small", func(e *colly.HTMLElement) {
+	// c.OnHTML("font.small", func(e *colly.HTMLElement) {
+	c.OnHTML("small", func(e *colly.HTMLElement) {
 		// Pick the right element
 		text := e.Text
-		if len(text) > 32 && text != "*) Penghitungan hanya untuk kondisi Baik, Rusak Ringan dan Rusak Sedang" {
+		if strings.Contains(text, "(master referensi)") {
 			add := strings.Split(text, "(")[0]
-			addr := add[1:]
-			address = addr[:len(add)-2]
+			// addr := add[1:]
+			address = add //addr[:len(add)-2]
 			// Printing the address
-			color.Green("Address for " + id + " has been found")
-			color.Green(address)
+			color.Green("Found [" + address + "]")
 		}
 	})
 
 	// Before making a request print "Visiting ..."
 	c.OnRequest(func(r *colly.Request) {
-		color.Cyan("Fetching address of " + id)
+		color.Cyan("Fetching [" + id + "]")
 	})
 
 	// Start scraping on sekolah.data.kemdikbud.go.id
