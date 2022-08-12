@@ -85,7 +85,7 @@ func dapoGetAlamat(id string) string {
 			if strings.Contains(text, "(master referensi)") {
 				add := strings.Split(text, "(")[0]
 				// addr := add[1:]
-				address = add[:len(add)-2]
+				address = add[:len(add)-1]
 				// Printing the address
 				color.Green("Found [" + address + "]")
 			}
@@ -100,7 +100,7 @@ func dapoGetAlamat(id string) string {
 		if strings.Contains(text, "(master referensi)") {
 			add := strings.Split(text, "(")[0]
 			// addr := add[1:]
-			address = add[:len(add)-2]
+			address = add[:len(add)-1]
 			// Printing the address
 			color.Green("Found [" + address + "]")
 		}
